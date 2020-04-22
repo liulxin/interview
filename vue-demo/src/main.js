@@ -4,7 +4,8 @@ import router from './router'
 import store from './store'
 
 // import './defineProperty'
-import './defineProperty/observe.js'
+// import './defineProperty/observe.js'
+import './compiler'
 
 Vue.config.productionTip = false
 

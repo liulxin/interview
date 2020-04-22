@@ -6,7 +6,8 @@ import store from './store'
 // import './defineProperty'
 // import './defineProperty/observe.js'
 // import './compiler'
-import './proxy'
+// import './proxy'
+import './proxy/observe'
 
 Vue.config.productionTip = false
 

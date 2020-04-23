@@ -17,8 +17,8 @@ export default {
     increment1 (event) {
       // eslint-disable-next-line no-proto
       console.log('event', event, event.__proto__.constructor)
-      console.log(event.target) // event 在哪里监听的
-      console.log(event.currentTarget) // event 在哪里触发的
+      console.log(event.target) // event 在哪里触发的
+      console.log(event.currentTarget) // event 在哪里监听的
       this.num++
 
       // 1. event 是原生的

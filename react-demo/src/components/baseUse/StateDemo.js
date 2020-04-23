@@ -73,6 +73,12 @@ class StateDemo extends React.Component {
     //   console.log('count in body', this.state.count)
     // })
   }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log(nextState)
+
+    return true
+  }
 }
 
 export default StateDemo;

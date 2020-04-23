@@ -1,5 +1,5 @@
 import React from "react";
-import PropsTyes from "prop-types";
+import PropTypes from "prop-types";
 
 class Input extends React.Component {
   state = {
@@ -32,7 +32,7 @@ class Input extends React.Component {
 }
 
 Input.propTypes = {
-  submitTitle: PropsTyes.func.isRequired,
+  submitTitle: PropTypes.func.isRequired,
 };
 
 class List extends React.Component {
@@ -50,8 +50,29 @@ class List extends React.Component {
 }
 
 List.propTypes = {
-  list: PropsTyes.arrayOf(PropsTyes.object).isRequired,
+  list: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
+
+// 添加时 footer 也会造成更新
+// react默认父组件更新了，子组件无条件更新
+// 可以通过componentDidUpdate 进行优化
+class Footer extends React.Component {
+  render() {
+    return <div>{this.props.text} {this.props.length}</div>
+  }
+  componentDidUpdate() {
+    console.log('footer did update')
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    if(nextProps.text !== this.props.text || nextProps.length !== this.props.length) {
+      return true
+    }
+    return false
+  }
+}
+Footer.propTypes = {
+  text: PropTypes.string.isRequired
+}
 
 class TodoList extends React.Component {
   constructor(props) {
@@ -71,6 +92,7 @@ class TodoList extends React.Component {
           title: "标题3",
         },
       ],
+      footerInfo: 'footer'
     };
   }
   render() {
@@ -78,6 +100,7 @@ class TodoList extends React.Component {
       <div>
         <Input submitTitle={this.onSubmitTitle} />
         <List list={this.state.list} />
+        <Footer text={this.state.footerInfo} length={this.state.list.length}/>
       </div>
     );
   }

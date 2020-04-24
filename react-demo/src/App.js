@@ -1,11 +1,11 @@
 import React from 'react';
-import BaseUseDemo from './components/baseUse'
+// import BaseUseDemo from './components/baseUse'
 import AdvanceUseDemo from './components/advanceUse'
 
 function App() {
   return (
     <div className="App">
-      <BaseUseDemo />
+      {/* <BaseUseDemo /> */}
       <AdvanceUseDemo />
     </div>
   );

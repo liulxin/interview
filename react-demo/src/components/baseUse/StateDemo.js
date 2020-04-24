@@ -44,6 +44,7 @@ class StateDemo extends React.Component {
   };
 
   componentDidMount() {
+    let isB = true
     // 不可变值 - 数组
     // 不能对 this.state.list 进行 push pop splice ，违反不可变值
     const list5Copy = this.state.list5.slice();
@@ -66,12 +67,14 @@ class StateDemo extends React.Component {
     })
 
     // 自定义事件 同步
-    // document.body.addEventListener('click', () => {
-    //   this.setState({
-    //     count: this.state.count + 1
-    //   })
-    //   console.log('count in body', this.state.count)
-    // })
+    document.body.addEventListener('click', () => {
+      console.log(isB)
+      this.setState({
+        count: this.state.count + 1
+      })
+      console.log('count in body', this.state.count)
+    })
+    isB = false
   }
 
   shouldComponentUpdate(nextProps, nextState) {
